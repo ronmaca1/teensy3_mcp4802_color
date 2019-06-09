@@ -1,0 +1,6 @@
+{
+    "board": "arduino:avr:micro",
+    "port": "COM9",
+    "sketch": "rons_shop_pwm.ino",
+    "output": "../build"
+}
