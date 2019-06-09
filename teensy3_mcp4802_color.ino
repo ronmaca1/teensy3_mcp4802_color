@@ -16,7 +16,7 @@
 // channel A , VREF gain 2(4.096v)
 #define MCP4802ACONFIGBITS  0x10
 // channel B , VREF gain 2(4.096v)
-#define MCP4802BCONFIGBITS  0x80
+#define MCP4802BCONFIGBITS  0x90
 
 
 #define _DEBUG_
@@ -115,7 +115,7 @@ void loop() {
 
 
         // band 3, DAC3
-        dacoutH = MCP4802ACONFIGBITS | ((band3>>4) & 0x0f);
+        dacoutH = MCP4802ACONFIGBITS | ((band3>>4) & 0x0F);
         dacoutL = (band3<<4) & 0xF0;
         digitalWrite(DAC2SEL, LOW);
         delayMicroseconds(1);            // let the DAC get ready
@@ -128,7 +128,7 @@ void loop() {
         delayMicroseconds(1);
 
         // band 4 DAC4
-        dacoutH = MCP4802BCONFIGBITS | ((band4>>4) & 0x0f);
+        dacoutH = MCP4802BCONFIGBITS | ((band4>>4) & 0x0F);
         dacoutL = (band4<<4) & 0xF0;
         digitalWrite(DAC2SEL, LOW);
         delayMicroseconds(1);
