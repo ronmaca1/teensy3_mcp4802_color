@@ -9,11 +9,12 @@
 #define DAC1SEL     3
 #define DAC2SEL     4
 #define LDACALL     14
-// swap out for MCP4802 with internal reference and a gain of 2 setting
+
 // no buffer on vref, gain of 2, shdn disabled  
 // gives the following nybbles for dac a , b
 // channel A , VREF gain 2(4.096v)
-#define MCP4802ACONFIGBITS  0x10
+// (use for MCP4801 single channel, too)
+#define MCP4802ACONFIGBITS  0x10 
 // channel B , VREF gain 2(4.096v)
 #define MCP4802BCONFIGBITS  0x90
 
