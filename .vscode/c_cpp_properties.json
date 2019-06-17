@@ -8,7 +8,6 @@
                 "C:\\Program Files (x86)\\Arduino\\hardware\\tools\\avr\\**",
                 "C:\\Users\\ronm\\Documents\\Arduino\\libraries\\**",
                 "C:/Users/ronm/Documents/Arduino/hardware/ATTinyCore-master/avr/cores/tinymodern",
-                "C:\\Program Files (x86)\\Arduino\\tools\\**",
                 "/home/ronm/arduino-1.8.9/hardware/arduino/avr/**",
                 "/home/ronm/arduino-1.8.9/tools/**"
             ],

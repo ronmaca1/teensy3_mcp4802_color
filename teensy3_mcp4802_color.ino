@@ -33,8 +33,6 @@ AudioAnalyzeFFT256       fft256_1;
 AudioConnection          patchCord1(adc1, fft256_1);
 // GUItool: end automatically generated code
 
-
-
 void setup() {
 #ifdef _DEBUG_
     Serial.begin(115200);
