@@ -89,8 +89,7 @@ void loop() {
         
 #endif
         // band 1, DAC1
-        
-        dacoutH = MCP4802ACONFIGBITS | ((band1>>4) & 0x0F);
+        dacoutH = MCP4802ACONFIGBITS | ((band1 >> 4) & 0x0F);
         dacoutL = (band1<<4) & 0xF0;
         digitalWrite(DAC1SEL, LOW);
         delayMicroseconds(1);            // let the DAC get ready
@@ -103,7 +102,7 @@ void loop() {
         delayMicroseconds(1);
 
         // band 2, DAC2
-        dacoutH = MCP4802BCONFIGBITS | ((band2>>4) & 0x0F);
+        dacoutH = MCP4802BCONFIGBITS | ((band2 >> 4) & 0x0F);
         dacoutL = (band2<<4) & 0xF0;
         digitalWrite(DAC1SEL, LOW);
         delayMicroseconds(1);
@@ -115,7 +114,7 @@ void loop() {
 
 
         // band 3, DAC3
-        dacoutH = MCP4802ACONFIGBITS | ((band3>>4) & 0x0F);
+        dacoutH = MCP4802ACONFIGBITS | ((band3 >> 4) & 0x0F);
         dacoutL = (band3<<4) & 0xF0;
         digitalWrite(DAC2SEL, LOW);
         delayMicroseconds(1);            // let the DAC get ready
@@ -128,7 +127,7 @@ void loop() {
         delayMicroseconds(1);
 
         // band 4 DAC4
-        dacoutH = MCP4802BCONFIGBITS | ((band4>>4) & 0x0F);
+        dacoutH = MCP4802BCONFIGBITS | ((band4 >> 4) & 0x0F);
         dacoutL = (band4<<4) & 0xF0;
         digitalWrite(DAC2SEL, LOW);
         delayMicroseconds(1);
@@ -136,17 +135,5 @@ void loop() {
         SPI.transfer(dacoutL);
         delayMicroseconds(1);            // let the DAC settle
         digitalWrite(DAC2SEL, HIGH);
-        //done with dac2 A and B
-
-        // wait a little then
-        // latch all dac data to outputs
-        delayMicroseconds(1);
-        digitalWrite(LDACALL,LOW);
-        delayMicroseconds(1);
-        digitalWrite(LDACALL,HIGH);
     }
-    digitalWrite(RAMPRESET,LOW);
-    delayMicroseconds(100);
-    digitalWrite(RAMPRESET,HIGH);
-    delay(8); // about 120 hz for testing, replace with zero cross detection
-}
+}    
