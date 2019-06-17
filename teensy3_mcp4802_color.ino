@@ -136,4 +136,10 @@ void loop() {
         delayMicroseconds(1);            // let the DAC settle
         digitalWrite(DAC2SEL, HIGH);
     }
+    
+    digitalWrite(RAMPRESET,LOW);
+    delayMicroseconds(100);
+    digitalWrite(RAMPRESET,HIGH);
+    delay(8); // about 120 hz for testing, replace with zero cross detection
+
 }    
