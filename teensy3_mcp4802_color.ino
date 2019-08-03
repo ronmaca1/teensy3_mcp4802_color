@@ -73,6 +73,7 @@ void loop()
         band2 = (uint8_t)(fft256_1.read(8, 23) * 256);
         band3 = (uint8_t)(fft256_1.read(24, 55) * 256);
         band4 = (uint8_t)(fft256_1.read(56, 127) * 256);
+
 #ifdef _DEBUG_
         Serial.print("\n\r");
         Serial.print(band1);
@@ -86,7 +87,9 @@ void loop()
         Serial.print(AudioMemoryUsageMax());
 
 #endif
-        // band 1, DAC1A
+        // see datasheet for MCP4802 to decipher data transfer formatting that follows
+
+        // band 1, DAC1A        
         dacoutH = MCP4802ACONFIGBITS | ((band1 >> 4) & 0x0F);
         dacoutL = (band1 << 4) & 0xF0;
         digitalWrite(DAC1SEL, LOW);
