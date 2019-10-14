@@ -11,29 +11,24 @@
 #define LDACALL     14
 
 // mcp 48xx dacs have no buffer on vref, config bit 14 not used
+// shutdown disabled, two different gain settings gives us the constants below
 
-// the following code is *shit*.... find a better way to set gain
-// i.e. just flip the gain bit without storing all these defines.
-// write a routine to produce the settings bits
+#define DAC1ACFG 0x30   // gain of 1, shdn disabled
 
-// gain of 1, shdn disabled, dac a gives us the constant below
-#define DAC1ACFG 0x30
-// gain of 2, shdn disabled, dac a gives us the constant below
-// #define DAC1ACFG 0x10
-// gain of 1, shdn disabled, dac b gives us the constant below
-#define DAC1BCFG 0xB0
-// gain of 2, shdn disabled, dac b gives us the constant below
-// #define DAC1BCFG 0x90
+// #define DAC1ACFG 0x10    // gain of 2, shdn disabled
 
-/** higher frequncy dac is set to gain of 2 **/
-// gain of 1, shdn disabled, dac a gives us the constant below
-#define DAC2ACFG 0x30
-// gain of 2, shdn disabled, dac a gives us the constant below
-// #define DAC2ACFG 0x10
-// gain of 1, shdn disabled, dac b gives us the constant below
-// #define DAC2BCFG 0xB0
-// gain of 2, shdn disabled, dac b gives us the constant below
-#define DAC2BCFG 0x90
+#define DAC1BCFG 0xB0   // gain of 1, shdn disabled
+
+// #define DAC1BCFG 0x90    // gain of 2, shdn disabled
+
+
+#define DAC2ACFG 0x30   // gain of 1, shdn disabled
+
+// #define DAC2ACFG 0x10    //  gain of 2, shdn disabled
+
+#define DAC2BCFG 0xB0    // gain of 1, shdn disabled
+
+// #define DAC2BCFG 0x90   // gain of 2, shdn disabled
 
 
 #define _DEBUG_
@@ -79,13 +74,14 @@ void setup() {
 void loop() {
     // put your main code here, to run repeatedly:
     //digitalWrite(13, !(digitalRead(13)));
+    
     if (fft256_1.available()) {
 
         band1=(uint8_t) (fft256_1.read(0,7)*256);
         band2=(uint8_t) (fft256_1.read(8,31)*256);
         band3=(uint8_t) (fft256_1.read(32,63)*256);
         band4=(uint8_t) (fft256_1.read(64,127)*256);
-;
+
 #ifdef _DEBUG_
         Serial.print("\n\r");
         Serial.print(band1);
@@ -161,7 +157,7 @@ void loop() {
         digitalWrite(LDACALL,HIGH);
     }
     digitalWrite(RAMPRST,LOW);
-    delayMicroseconds(100);
+    delayMicroseconds(100); 
     digitalWrite(RAMPRST,HIGH);
     delay(8); // about 120 hz for testing, replace with zero cross detection
 }
