@@ -157,7 +157,7 @@ void loop() {
         digitalWrite(LDACALL,HIGH);
     }
     digitalWrite(RAMPRST,LOW);
-    delayMicroseconds(100); 
+    delayMicroseconds(250); 
     digitalWrite(RAMPRST,HIGH);
     delay(8); // about 120 hz for testing, replace with zero cross detection
 }
